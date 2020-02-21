@@ -1,0 +1,27 @@
+{
+  "name": "black-magic",
+  "version": "0.0.0",
+  "description": "Black Magic server",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node --experimental-modules src/index.js"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alan-Liang/black-magic.git"
+  },
+  "author": "Alan-Liang",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Alan-Liang/black-magic/issues"
+  },
+  "homepage": "https://github.com/Alan-Liang/black-magic#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "koa": "^2.11.0",
+    "koa-router": "^8.0.8",
+    "koa-static": "^5.0.0",
+    "socket.io": "^2.3.0"
+  }
+}

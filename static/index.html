@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>黑魔法</title>
+  <style>
+    .hidden {
+      display: none;
+    }
+    #message {
+      border-left: blue solid 4px;
+      padding: 12px;
+      -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+      box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.1);
+      background-color: #aaf;
+      cursor: pointer;
+    }
+    #message::after {
+      content: 'x';
+      float: right;
+    }
+    #players::before {
+      content: '玩家:';
+    }
+    #guesses::before {
+      content: '猜测:';
+    }
+    #data-table::before {
+      content: '历史:';
+    }
+    #players::before, #guesses::before, #data-table::before {
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <noscript>你需要启用 JavaScript。</noscript>
+  <div id="container">
+    <h2 id="ended" class="hidden"></h2>
+    <div id="message" onclick="this.hide()" class="hidden"></div>
+    <div id="wait" class="hidden">请等待其他人……</div>
+    <div id="started" class="hidden">游戏已经开始。您不能再加入。</div>
+    <div id="join" class="hidden">
+      <h3>加入游戏</h3>
+      称呼: <input id="name"><br>
+      规则: <input id="rule"><br>
+      <button onclick="bmg.join()">加入</button>
+    </div>
+    <ul id="guesses" class="hidden"></ul>
+    <div id="choice" class="hidden">
+      <span id="choose-content"></span>
+      <button onclick="bmg.choose()">提交</button>
+    </div>
+    <div id="words" class="hidden">
+      请输入你的关键词：
+      <input id="word">
+      <button onclick="bmg.word()">提交</button>
+    </div>
+    <ol id="players" class="hidden"></ol>
+    <ul id="guesses" class="hidden"></ul>
+    <div id="guess" class="hidden">
+      <h4>猜测</h4>
+      玩家编号: <input type="number" id="guess-who"><br>
+      猜测规则：<input id="guess-what"><br>
+      <button onclick="bmg.guess()">提交</button>
+      <br>
+      <button onclick="bmg.die()">被人看出来了</button>
+    </div>
+    <table id="data-table" class="hidden"></table>
+  </ul>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/controls.js"></script>
+</body>
+</html>
